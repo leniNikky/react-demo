@@ -1,4 +1,5 @@
 import React, {Component,Fragment} from 'react'
+import MealItem from './MealItem'
 
 class OrderMeal extends Component{
     constructor(props){
@@ -17,7 +18,9 @@ class OrderMeal extends Component{
                 <button onClick={this.listChange.bind(this)}>增加餐品</button>
                 <ul className="li-list">
                     {this.state.list.map((item,index)=>{
-                        return (<li key={index+item} onClick={this.deleteItem.bind(this,index)}>{item}</li>)
+                        return (
+                                <MealItem content={item} key={index+item}/>
+                        )
                     })}
                 </ul>
             </Fragment>
