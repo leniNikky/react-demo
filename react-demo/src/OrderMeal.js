@@ -19,7 +19,11 @@ class OrderMeal extends Component{
                 <ul className="li-list">
                     {this.state.list.map((item,index)=>{
                         return (
-                                <MealItem content={item} key={index+item}/>
+                                <MealItem 
+                                    content={item} 
+                                    index={index} 
+                                    key={index+item}
+                                    deleteItem={this.deleteItem.bind(this,index)}/>
                         )
                     })}
                 </ul>
