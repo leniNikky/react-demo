@@ -14,9 +14,9 @@ class OrderMeal extends Component{
     render(){
         return (
             <Fragment>
-                <input value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
-                <button onClick={this.listChange.bind(this)}>增加餐品</button>
-                <ul className="li-list">
+                <input ref={(input)=>{this.input = input}} value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
+                <button onClick={this.addItem.bind(this)}>增加餐品</button>
+                <ul ref={(ul)=>{this.ul = ul}} className="li-list">
                     {this.state.list.map((item,index)=>{
                         return (
                                 <MealItem 
@@ -36,14 +36,17 @@ class OrderMeal extends Component{
         // 未bind时，this为undefined，绑定完this时OrderMeal
         // console.log(this)
         this.setState({
-            inputValue:e.target.value
+            inputValue:this.input.value
         })
     }
 
-    listChange(){
+    addItem(){
+        // setState后可接回调函数，解决异步问题
         this.setState({
             list:[...this.state.list, this.state.inputValue],
             inputValue:''
+        },()=>{
+            console.log(this.ul.querySelectorAll('li').length)
         })
     }
 
