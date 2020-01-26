@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 class MealItem extends Component {
     constructor(props){
         super(props)
@@ -6,7 +7,7 @@ class MealItem extends Component {
     }
     render() { 
         return ( 
-            <li onClick={this.deleteItem}>{this.props.content}</li>
+        <li onClick={this.deleteItem}>${this.props.price} {this.props.content}</li>
          );
     }
 
@@ -14,6 +15,17 @@ class MealItem extends Component {
         // console.log(this.props.index)
         this.props.deleteItem(this.props.index)
     }
+}
+
+MealItem.propTypes = {
+    price:PropTypes.number.isRequired,
+    content: PropTypes.string,
+    index: PropTypes.number,
+    deleteItem: PropTypes.func
+}
+
+MealItem.defaultProps = {
+    price:1000
 }
  
 export default MealItem
