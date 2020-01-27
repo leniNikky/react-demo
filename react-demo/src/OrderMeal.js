@@ -1,5 +1,6 @@
 import React, {Component,Fragment} from 'react'
 import MealItem from './MealItem'
+import Axios from 'axios'
 
 class OrderMeal extends Component{
     constructor(props){
@@ -9,6 +10,17 @@ class OrderMeal extends Component{
             inputValue:'',
             list:['宫保鸡丁','海鲜意面']
         }
+    }
+
+    UNSAFE_componentWillMount(){
+        Axios.get('https://www.easy-mock.com/mock/xxxx/react-demo/getList')
+        .then((res)=>{
+            // console.log('data:'+JSON.stringify(res.data))
+            this.setState({
+                list:res.data.data
+            })
+        })
+        .catch((error)=>{console.log(error)})
     }
 
     render(){
