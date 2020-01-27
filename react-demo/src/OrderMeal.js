@@ -1,6 +1,8 @@
 import React, {Component,Fragment} from 'react'
 import MealItem from './MealItem'
 import Axios from 'axios'
+import Employee from './employee'
+import './style.css'
 
 class OrderMeal extends Component{
     constructor(props){
@@ -13,7 +15,7 @@ class OrderMeal extends Component{
     }
 
     UNSAFE_componentWillMount(){
-        Axios.get('https://www.easy-mock.com/mock/xxxx/react-demo/getList')
+        Axios.get('https://www.easy-mock.com/mock/5e2e732cefe660215074f38e/react-demo/getList')
         .then((res)=>{
             // console.log('data:'+JSON.stringify(res.data))
             this.setState({
@@ -39,6 +41,7 @@ class OrderMeal extends Component{
                         )
                     })}
                 </ul>
+                <Employee/>
             </Fragment>
         )
     }
