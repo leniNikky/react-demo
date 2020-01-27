@@ -5,6 +5,13 @@ class MealItem extends Component {
         super(props)
         this.deleteItem = this.deleteItem.bind(this)
     }
+
+    // 组件第一次存在于dom中，不会执行
+    // 如果已经存在dom中，函数才会执行
+    UNSAFE_componentWillReceiveProps(){
+        console.log('UNSAFE_componentWillReceiveProps')
+    }
+
     render() { 
         return ( 
         <li onClick={this.deleteItem}>${this.props.price} {this.props.content}</li>
