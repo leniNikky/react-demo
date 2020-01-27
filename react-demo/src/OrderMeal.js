@@ -11,31 +11,7 @@ class OrderMeal extends Component{
         }
     }
 
-    // 17.0版本以上已不推荐使用
-    // componentWillMount(){
-    //     console.log('1-componentWillMount----------------即将挂载')
-    // }
-
-    componentDidMount(){
-        console.log('3-componentDidMount----------------挂载完成')
-    }
-
-    // 17.0版本以上已不推荐使用
-    // componentWillUpdate(){
-    //     console.log('4-componentWillUpdate----------------')
-    // }
-
-    shouldComponentUpdate(){
-        console.log('shouldComponentUpdate----------------')
-        return true
-    }
-
-    componentDidUpdate(){
-        console.log('5-componentDidUpdate----------------')
-    }
-
     render(){
-        console.log('2-render----------------挂载中')
         return (
             <Fragment>
                 <input ref={(input)=>{this.input = input}} value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>

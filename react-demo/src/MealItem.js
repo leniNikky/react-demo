@@ -6,13 +6,16 @@ class MealItem extends Component {
         this.deleteItem = this.deleteItem.bind(this)
     }
 
-    // 组件第一次存在于dom中，不会执行
-    // 如果已经存在dom中，函数才会执行
-    UNSAFE_componentWillReceiveProps(){
-        console.log('UNSAFE_componentWillReceiveProps')
+    shouldComponentUpdate(nextProps,nextState){
+        if(nextProps.content !== this.props.content){
+            return true
+        }else{
+            return false
+        }
     }
 
     render() { 
+        console.log('child render')
         return ( 
         <li onClick={this.deleteItem}>${this.props.price} {this.props.content}</li>
          );
